@@ -55,7 +55,7 @@ def tweetMSG():
 def imgSelector():
 
     global imgCounter
-
+    
     imgPath = Path(constants.IMAGE_PATH + 'bok' + str(imgCounter) + '.jpg')
 
     print(imgPath)
@@ -65,6 +65,7 @@ def imgSelector():
         return imgPath
     else:
         imgCounter = 0
+        print("DOES NOT EXISTS")
         imgPath = Path(constants.IMAGE_PATH + 'bok' + str(imgCounter) + '.jpg')
 
     return imgPath
@@ -89,7 +90,6 @@ def main():
     while True: 
         schedule.run_pending()
         time.sleep(30)
-    print('hi')
 
 if __name__ == "__main__":
     main()

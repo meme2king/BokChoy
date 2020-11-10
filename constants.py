@@ -6,4 +6,4 @@ ACCESS_TOKEN = '1325619859695181824-RvsGmEHX82QXPrYwzGi7U66H1u86bD'
 ACCESS_SECRET_TOKEN = 'OC0MaxDfveLaPExZyAtU1YERDXq0Kpez064HJmYlGcLJI'
 
 # Image Path
-IMAGE_PATH = '/Users/luisfeliciano/Documents/Development/BokChoy/src/bokchoyimages/'
+IMAGE_PATH = 'bokchoyimages/'
