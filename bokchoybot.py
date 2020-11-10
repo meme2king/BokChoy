@@ -85,7 +85,7 @@ def main():
     api = authenticate()
     print("Bok Choy has been Authenticated")
 
-    schedule.every().minute.at(":30").do(job, api)
+    schedule.every().day.at("8:00").do(job, api)
 
     while True: 
         schedule.run_pending()
