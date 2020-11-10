@@ -4,6 +4,7 @@ import time
 import random
 from tweepy import Stream
 from tweepy.streaming import StreamListener
+from pathlib import Path
 import os.path
 from os import path
 import schedule
@@ -16,8 +17,6 @@ def authenticate():
     authentication.set_access_token(constants.ACCESS_TOKEN, constants.ACCESS_SECRET_TOKEN)
     api = tweepy.API(authentication)
     return api
-
-
 
 def tweetMSG():
 
@@ -57,15 +56,16 @@ def imgSelector():
 
     global imgCounter
 
-    imgPath = constants.IMAGE_PATH + 'bok' + str(imgCounter) + '.jpg'
+    imgPath = Path(constants.IMAGE_PATH + 'bok' + str(imgCounter) + '.jpg')
 
-    if path.exists(imgPath):
+    print(imgPath)
+
+    if imgPath.exists():
         imgCounter += 1
         return imgPath
     else:
         imgCounter = 0
-        print("NO EXISTS")
-        imgPath = constants.IMAGE_PATH + 'bok' + str(imgCounter) + '.jpg'
+        imgPath = Path(constants.IMAGE_PATH + 'bok' + str(imgCounter) + '.jpg')
 
     return imgPath
 
@@ -78,19 +78,18 @@ def job(api):
 
 def main():
 
-    # print("Bok Choy Bot Console:")
+    print("Bok Choy Bot Console:")
 
-    # # Authentication Process
-    # api = authenticate()
-    # print("Bok Choy has been Authenticated")
+    # Authentication Process
+    api = authenticate()
+    print("Bok Choy has been Authenticated")
 
-    # schedule.every().day.at("8:00").do(job, api)
+    schedule.every().minute.at(":30").do(job, api)
 
-    # while True: 
-    #     schedule.run_pending()
-    #     time.sleep(30)
-
-    print(imgSelector())
+    while True: 
+        schedule.run_pending()
+        time.sleep(30)
+    print('hi')
 
 if __name__ == "__main__":
     main()
