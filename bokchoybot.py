@@ -66,14 +66,14 @@ def imgSelector():
     if imgPath.exists():
         imgCounter += 1
         data['imgCounter'] = imgCounter
-        with open('imgCounter.json') as json_file:
+        with open('imgCounter.json', 'w') as json_file:
             json.dump(data, json_file)
         return imgPath
     else:
         print("DOES NOT EXISTS")
         imgCounter = 0
         data['imgCounter'] = imgCounter
-        with open('imgCounter.json') as json_file:
+        with open('imgCounter.json', 'w') as json_file:
             json.dump(data, json_file)
         imgPath = Path(constants.IMAGE_PATH + 'bok' + str(imgCounter) + '.jpg')
 
@@ -94,7 +94,7 @@ def main():
     api = authenticate()
     print("Bok Choy has been Authenticated")
 
-    schedule.every().day.at("22:00").do(job, api)
+    schedule.every().minute.at(":30").do(job, api)
 
     while True: 
         schedule.run_pending()
