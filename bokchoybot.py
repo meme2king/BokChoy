@@ -54,28 +54,9 @@ def tweetMSG():
 
 def imgSelector():
     
-    with open('imgCounter.json') as json_file:
-        data = json.load(json_file)
-
-    imgCounter = data['imgCounter']
+    imgCounter = random.randint(0, 55)
     
     imgPath = Path(constants.IMAGE_PATH + 'bok' + str(imgCounter) + '.jpg')
-
-    print(imgPath)
-
-    if imgPath.exists():
-        imgCounter += 1
-        data['imgCounter'] = imgCounter
-        with open('imgCounter.json', 'w') as json_file:
-            json.dump(data, json_file)
-        return imgPath
-    else:
-        print("DOES NOT EXISTS")
-        imgCounter = 0
-        data['imgCounter'] = imgCounter
-        with open('imgCounter.json', 'w') as json_file:
-            json.dump(data, json_file)
-        imgPath = Path(constants.IMAGE_PATH + 'bok' + str(imgCounter) + '.jpg')
 
     return imgPath
 
