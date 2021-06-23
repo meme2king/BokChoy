@@ -54,7 +54,7 @@ def tweetMSG():
 
 def imgSelector():
     
-    imgCounter = random.randint(0, 55)
+    imgCounter = random.randint(0, 72)
     
     imgPath = Path(constants.IMAGE_PATH + 'bok' + str(imgCounter) + '.jpg')
 
